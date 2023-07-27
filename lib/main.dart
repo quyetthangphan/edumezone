@@ -1,9 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'screens/home/home_screen.dart';
+import 'firebase_options.dart';
 import 'screens/login/login_screen.dart';
 
 void main() {
+  _inittializeFirebase();
   runApp(const MyApp());
 }
 
@@ -23,4 +25,10 @@ class MyApp extends StatelessWidget {
       home: LoginScreen(),
     );
   }
+}
+
+_inittializeFirebase() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
